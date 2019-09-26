@@ -2,8 +2,15 @@
     "name": "@fdmg/ab",
     "version": "1.0.0",
     "description": "A/B Testing Component",
-    "types": "dist/AB.d.ts",
-    "main": "dist/AB.js",
+    "types": "dist/ab.d.ts",
+    "main": "dist/ab.js",
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:FDMediagroep/fdmg-ts-react-ab.git"
+    },
     "scripts": {
         "build-prod": "cross-env NODE_ENV=production webpack --mode=production",
         "lint": "eslint components/**/*",
