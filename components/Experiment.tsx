@@ -44,7 +44,9 @@ export function Experiment(props: Experiment) {
     const [debug, setDebug] = useState(false);
     const [cookies, setCookies] = useContext(ABContext);
     const [variant, setVariant] = useState(
-        cookies[props.name] ? parseInt(cookies[props.name], 10) : -1
+        cookies[encodeURIComponent(props.name)]
+            ? parseInt(cookies[encodeURIComponent(props.name)], 10)
+            : -1
     );
     const [open, setOpen] = React.useState(false);
 
@@ -74,7 +76,10 @@ export function Experiment(props: Experiment) {
         if (variant !== -1) {
             let newCookies: any = {};
             if (cookies) {
-                newCookies = { ...cookies, [props.name]: variant };
+                newCookies = {
+                    ...cookies,
+                    [encodeURIComponent(props.name)]: variant,
+                };
             }
             setCookies(newCookies);
             Cookies.set(props.name, `${variant}`, { expires: MAX_AGE });
@@ -90,7 +95,10 @@ export function Experiment(props: Experiment) {
         if (cookies) {
             newCookies = { ...cookies };
         }
-        const { [experimentName]: _, ...trimmedCookies } = newCookies;
+        const {
+            [encodeURIComponent(experimentName)]: _,
+            ...trimmedCookies
+        } = newCookies;
         Cookies.remove(experimentName);
         setCookies(trimmedCookies);
     }
