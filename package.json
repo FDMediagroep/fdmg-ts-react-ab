@@ -1,6 +1,6 @@
 {
     "name": "@fdmg/ab",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A/B Testing Component",
     "types": "dist/ab.d.ts",
     "main": "dist/ab.js",
