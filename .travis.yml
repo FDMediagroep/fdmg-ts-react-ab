@@ -1,0 +1,57 @@
+language: node_js
+node_js:
+    - 11.10.1
+python:
+    - "3.6"
+cache:
+    - pip
+addons:
+    apt:
+        packages:
+            - nodejs-legacy
+branches:
+    only:
+        - master
+        - /^greenkeeper/.*$/
+stages:
+    - test
+before_install:
+    - pip install --user awscli
+    - export PATH=$PATH:$HOME/.local/bin
+install:
+    - npm install
+jobs:
+    include:
+        - stage: test
+          name: Build demo
+          script: npm run build-demo
+        - stage: test
+          name: Unit test
+          script: npm test
+after_success:
+    - cat ./dist/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+deploy:
+    - provider: npm
+      email: willem_liu@hotmail.com
+      on:
+          branch: master
+      api_key:
+          secure: WwCxdO/i2dDJ3RO0ea3aCkj6ZykjI7i6ptj2QAEFeAn86eZL8m1b9to13HfUVnt8E4U5O1M0YB+ePMJSOY0N2SMt0VjEgffr8r/0nLLXWb8TAMFFuReNK6SP7L3OxyLhK5ZvJZuENQXs4I3mwVKJeTcdB7vRXDF+AmFK3yRa6kvnEEM30tbOzgz1+LtfM2xfu6s+UMBjhbTjBUcYk/EWto+6XvNs56CkujRxT/4ZDsUl0kZVzGTpywI1nO4KvIV4MiQYvWmiUo5fjOiacfYg8HPAahnXF+selagKLMRIxxTa5Uz96yMepdlMmT60RyvgUT88BMVemEsD5HU5hwJ3DMeuKdV7bWV5nHVllVuAQzitJFzA3OKn7iuJDRSyGGRYD0TFmOKUGOusyG2X33CrDZFRRXn901ucgr5h2Rj4qsa3QgL6M/dmUObyNHNsPtcYqLc4LguV5ruUVyB4cdQYJOllaZZaOFCPbSFmdzCWAPIM8DfJpuSxt6N64cSyEvu6A/AoH0h33iAEQ7bhasOZnNq3Yk6a/n5r11x3NDCCJzKR31s7cMWUn0U4lrel0BqEcTTOUqH4xP409navSeSkwD/i2K4cewSz4PQw13rrU7gHYsKlkuOe6opWR89uIuJxnU3MMIG5TzMnG8kJldc5q7jQTOrgieomhiMSZgOyp9A=
+    - provider: s3
+      secret_access_key:
+          secure: YrtbsObyIYhWW+pBJS4nYLEctrbOOYJJmGEkFmFW9aFx6FaLQ6L1twCwdvrifYfMivojzROONoQYeeUmmooqPnuKCTOugdt8HbPiqdCsAFMpoZtysMjxB6b7Ro8VK4tGCHcFBfb6K/nnAEXeb4e4PmKnDY6ODnVVDg5VoPs5CoAKQUNnHiZ/KS3epcJXtLJ9+fXJvmd6lqmlWV85lVLJfWIJRLejV5O1Qsdtj5sTB7QnlE0GSQABQWI+xlEY3y9ywIFame2pwu2HfK0zGJqRq9kWhEKzKG7UdyQMHuC00YClCjMRdxTbBc2rTHLRJxblYxv24YvBHur6LQy6np9iP3JuIliHtE6b+qXFMwsgOylhKWWoT07dWF0M3KHxcI3Qfr/tRLFCU5jsQDj5DWNOakWMELCLrcXfWQ4sEM3d158c7MHhZgBbiJidlSaPfoozzJfmaKvhWzZBfwjc06pGiZyLI+MV7Jg2uwL5Ykrxsm7JK3B7l4bMDRB9V5GOyU9k37GRsNMZKp3KgIe6lgCjj8sBxmXZOFCNhugqGWH1OO8ZGHIKxSNs+VKEAFANMvyFrq5TnvYkdOjxuzkNB6cgxPt22+6BO/cMWsg1SGnBcbCRRji0UUmqOaxV+UbjYE1ZzR8Ks+7OleVH4J9lyTSm5+gl7fXDyy+tnkJS/z2I64g=
+      access_key_id:
+          secure: KBrRvjFx9T3/X5IGsHoIPslBtoHbQoSbHS6sp838AECoOzUaphnic95GQofPvbJv1kNlMhxMU6gMUdPC9ZgGDDFTdv0GSNhXvv2WvPM2td4iH+fsW2N1U7mONI8Ofa+/Cr0QVootEQZGX7TLMHrcHTGnLL8/OuuAVef8SrCqO5w/yd3NkLpQJiSDgYBrjBSZYNlClYusilXcZgCeEf+SVglDi8j5N1PqTUAfKvT59ide7rp8/VnNTjSPGnstI7ZJ0ekM5qhM32Iwqf/aixT+tfvJTWUtictJKqqrXTgFrN4gtltplhcJj0ccJ+hGlx3/LaMA6HYenDqOiuU/Iqvg1q0zelS1c6TpnoYXyRpRv6kJF5pO+EgsMOrOedqnVPdsV+gOjg7bErXZ3Kjad3ei70HauPiskFqdAt2kTwjp0QPXmhfkTOXWxbdrseRkHb73IyziyJ1xcQE8xvFk1JI736ulUhqbncTyqn4+ofOZWPNJv4gEE84SQJ3UXTW+vBf0x7VskmJk4rdtGxaVUapoXqGiah5Kr1XwsNA7yHPPC47dhdo1zlTAd3zNtH3CXnELBOlJZblMyMs69E6lMPOnenbqEZWSK1yxtgVc1xDcmeuXKrhEQd9CdGA/Wdzx87gAAH2GhRe85omMVOchdU7E14kLVrKKaNh782o2LJZV4dM=
+      region: eu-west-1
+      bucket: static.fd.nl
+      skip_cleanup: true
+      acl: public_read
+      local_dir: dist
+      upload_dir: react/typography
+      on:
+          branch: master
+notifications:
+    webhooks: https://outlook.office.com/webhook/09d65d9c-ba4d-4ce4-8ff9-985e1ea578a1@8f2a0bdd-25fe-430a-adb5-0d2367dd50ee/TravisCI/308b447ae6eb4c3f9c7e153e97a4bd25/aaeb5e7b-fe7b-4d97-9adf-3089c10da2cc
+    on_success: change
+after_deploy:
+    - aws cloudfront create-invalidation --distribution-id $CDN_DISTRIBUTION_ID --paths "/react/typography/*"

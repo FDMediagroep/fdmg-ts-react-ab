@@ -1,0 +1,62 @@
+{
+    "name": "@fdmg/ab",
+    "version": "1.0.0",
+    "description": "A/B Testing Component",
+    "types": "dist/AB.d.ts",
+    "main": "dist/AB.js",
+    "scripts": {
+        "build-prod": "cross-env NODE_ENV=production webpack --mode=production",
+        "lint": "eslint components/**/*",
+        "test": "jest"
+    },
+    "keywords": [
+        "AB",
+        "Testing"
+    ],
+    "author": "Willem Liu",
+    "license": "ISC",
+    "dependencies": {
+        "js-cookie": "^2.2.1",
+        "react": "^16.9.0",
+        "react-dom": "^16.9.0",
+        "react-modal": "^3.10.1"
+    },
+    "devDependencies": {
+        "@testing-library/jest-dom": "^4.1.0",
+        "@testing-library/react": "^9.1.4",
+        "@types/jest": "^24.0.18",
+        "@types/js-cookie": "^2.2.2",
+        "@types/react": "^16.9.3",
+        "@types/react-dom": "^16.9.1",
+        "@types/react-modal": "^3.8.3",
+        "@typescript-eslint/eslint-plugin": "^2.3.1",
+        "@typescript-eslint/parser": "^2.3.1",
+        "awesome-typescript-loader": "^5.2.1",
+        "coveralls": "^3.0.6",
+        "cross-env": "^6.0.0",
+        "eslint": "^6.4.0",
+        "eslint-config-prettier": "^6.3.0",
+        "eslint-plugin-prettier": "^3.1.1",
+        "eslint-plugin-react": "^7.14.3",
+        "jest": "^24.9.0",
+        "prettier": "^1.18.2",
+        "ts-jest": "^24.1.0",
+        "typescript": "^3.6.3",
+        "webpack": "^4.41.0",
+        "webpack-cli": "^3.3.9"
+    },
+    "jest": {
+        "preset": "ts-jest",
+        "collectCoverage": true,
+        "coverageDirectory": "dist/js-coverage",
+        "coverageReporters": [
+            "lcov",
+            "text"
+        ],
+        "globals": {
+            "ts-jest": {
+                "tsConfig": "tsconfig.test.json"
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+.next
+.next/
+.vscode
+.vscode/
+dist
+dist/
+node_modules
+node_modules/
+.env*
