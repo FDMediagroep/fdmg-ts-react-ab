@@ -22,7 +22,7 @@ interface Props {
     [x: string]: any;
 }
 
-Modal.setAppElement('#__next');
+Modal.setAppElement('body');
 
 export function Debug(props: Props) {
     function handleRemoveExperiment() {

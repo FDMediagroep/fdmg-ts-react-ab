@@ -14,9 +14,9 @@ A/B testing component
 # Usage
 
 ```
-import { Variant } from "../components/AB/Variant";
-import { Experiment } from "../components/AB/Experiment";
-import { ABProvider } from "../components/AB/ABProvider";
+import { Variant } from "@fdmg/ab";
+import { Experiment } from "@fdmg/ab";
+import { ABProvider } from "@fdmg/ab";
 
 ...
     <Experiment
