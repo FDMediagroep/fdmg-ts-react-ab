@@ -2,7 +2,7 @@
 .next/
 .vscode
 .vscode/
-coverage
+js-coverage
 node_modules
 node_modules/
 .env*
