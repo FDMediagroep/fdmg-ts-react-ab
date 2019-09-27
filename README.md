@@ -14,9 +14,7 @@ A/B testing component
 # Usage
 
 ```
-import { Variant } from "@fdmg/ab";
-import { Experiment } from "@fdmg/ab";
-import { ABProvider } from "@fdmg/ab";
+import { Experiment, Variant, ABProvider } from "@fdmg/ab";
 
 ...
     <Experiment
