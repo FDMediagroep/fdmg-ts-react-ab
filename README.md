@@ -15,19 +15,28 @@ A/B testing component
 
 ```
 import { Experiment, Variant, ABProvider } from "@fdmg/ab";
-
 ...
-    <Experiment
-        name="Globally unique experiment name"
-        debugUriParam="ABdebug=true"
-        onClick={console.log}
-        onRunExperiment={console.log}
-    >
-        <Variant name="A" onClick={console.log}>
-            <h1>Headline 1</h1>
-        </Variant>
-        <Variant name="B" onClick={console.log}>
-            <h1>Headline 2</h1>
-        </Variant>
-    </Experiment>
+    <ABProvider>
+...
+        <Experiment
+            name="Globally unique experiment name"
+            debugUriParam="ABdebug=true"
+            onClick={console.log}
+            onRunExperiment={console.log}
+        >
+            <Variant name="A" onClick={console.log}>
+                <h1>Headline 1</h1>
+            </Variant>
+            <Variant name="B" onClick={console.log}>
+                <h1>Headline 2</h1>
+            </Variant>
+        </Experiment>
+...
+    </ABProvider>
+...
 ```
+
+## <ABProvider>
+
+ABProvider component provides a context which manages cookies. The cookies are used to store variants shown to the user
+so subsequent visits show the same variants for that user.
