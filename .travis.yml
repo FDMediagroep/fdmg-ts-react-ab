@@ -29,7 +29,7 @@ jobs:
     name: Unit test
     script: npm test
     after_success:
-      - cat ./dist/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+      - cat ./dist/js-coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 deploy:
 - provider: npm
   email: willem_liu@hotmail.com
