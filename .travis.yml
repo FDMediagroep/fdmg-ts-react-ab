@@ -1,20 +1,20 @@
 language: node_js
 node_js:
-- 11.10.1
+  - 11.10.1
 addons:
   apt:
     packages:
-    - nodejs-legacy
+      - nodejs-legacy
 branches:
   only:
-  - master
-  - "/^greenkeeper/.*$/"
+    - master
+    - "/^greenkeeper/.*$/"
 stages:
-- test
+  - test
 before_install:
-- export PATH=$PATH:$HOME/.local/bin
+  - export PATH=$PATH:$HOME/.local/bin
 install:
-- npm i
+  - npm i
 jobs:
   include:
   - stage: test
