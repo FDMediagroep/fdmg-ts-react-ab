@@ -1,10 +1,6 @@
 language: node_js
 node_js:
 - 11.10.1
-python:
-- '3.6'
-cache:
-- pip
 addons:
   apt:
     packages:
@@ -16,7 +12,6 @@ branches:
 stages:
 - test
 before_install:
-- pip install --user awscli
 - export PATH=$PATH:$HOME/.local/bin
 install:
 - npm i
