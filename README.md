@@ -1,4 +1,4 @@
-[![Build Status](https://www.travis-ci.com/FDMediagroep/fdmg-ts-react-ab.svg?branch=master)](https://www.travis-ci.com/FDMediagroep/fdmg-ts-react-ab)
+[![Build Status](https://www.travis-ci.org/FDMediagroep/fdmg-ts-react-ab.svg?branch=master)](https://www.travis-ci.org/FDMediagroep/fdmg-ts-react-ab)
 [![Coverage Status](https://coveralls.io/repos/github/FDMediagroep/fdmg-ts-react-ab/badge.svg?branch=master)](https://coveralls.io/github/FDMediagroep/fdmg-ts-react-ab?branch=master)
 [![npm version](https://badge.fury.io/js/%40fdmg%2Fab.svg)](https://badge.fury.io/js/%40fdmg%2Fab)
 [![Greenkeeper badge](https://badges.greenkeeper.io/FDMediagroep/fdmg-ts-react-ab.svg)](https://greenkeeper.io/)
