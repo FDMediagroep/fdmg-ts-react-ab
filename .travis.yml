@@ -1,20 +1,22 @@
 language: node_js
 node_js:
-- 11.10.1
+  - 11.10.1
 addons:
   apt:
     packages:
-    - nodejs-legacy
+      - nodejs-legacy
 branches:
   only:
-  - master
-  - "/^greenkeeper/.*$/"
+    - master
+    - "/^greenkeeper/.*$/"
 stages:
-- test
+  - test
+  # - deploy
 before_install:
-- export PATH=$PATH:$HOME/.local/bin
+  - export PATH=$PATH:$HOME/.local/bin
 install:
-- npm i
+  - npm i
+  # - npm i -g now
 jobs:
   include:
   - stage: test
@@ -25,12 +27,12 @@ jobs:
     script: npm test
     after_success:
     - cat ./dist/js-coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
-  - stage: deploy
-    if: branch = master
-    name: Deploy Demo
-    script: 
-      - now --scope fdmediagroep --prod --token $NOW_TOKEN
-
+#  Deploy step is unnecessary because Zeit Now is connected to the Github repository and auto-deploys.
+#  - stage: deploy
+#    if: branch = master
+#    name: Deploy Demo
+#    script: 
+#      - now --scope fdmediagroep --prod --token $NOW_TOKEN
 deploy:
 - provider: npm
   email: willem_liu@hotmail.com
