@@ -5,7 +5,7 @@ declare type Cookies = {
 };
 export declare const ABContext: React.Context<[Cookies, (cookies: Cookies) => void]>;
 interface Props {
-    initialState: Cookies;
+    initialState?: Cookies;
     [x: string]: any;
 }
 export declare function ABProvider(props: Props): JSX.Element;

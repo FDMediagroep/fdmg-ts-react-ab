@@ -1,20 +1,20 @@
 language: node_js
 node_js:
-  - 11.10.1
+- 11.10.1
 addons:
   apt:
     packages:
-      - nodejs-legacy
+    - nodejs-legacy
 branches:
   only:
-    - master
-    - "/^greenkeeper/.*$/"
+  - master
+  - "/^greenkeeper/.*$/"
 stages:
-  - test
+- test
 before_install:
-  - export PATH=$PATH:$HOME/.local/bin
+- export PATH=$PATH:$HOME/.local/bin
 install:
-  - npm i
+- npm i
 jobs:
   include:
   - stage: test
@@ -24,14 +24,20 @@ jobs:
     name: Unit test
     script: npm test
     after_success:
-      - cat ./dist/js-coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+    - cat ./dist/js-coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  - stage: deploy
+    if: branch = master
+    name: Deploy Demo
+    script: 
+      - now --scope fdmediagroep --prod --token $NOW_TOKEN
+
 deploy:
 - provider: npm
   email: willem_liu@hotmail.com
   on:
     branch: master
   api_key:
-    secure: GUBM7KjqfUTHu+jBo31vm0SJw5S8T89oy4iPE6Y43n2zM941+TG2MNGG121+ZK4qY4t+EYsuLHwzk2u7pZF9FK1ekP9PXJOXr58fgI/izexkheKd7O7xZw9THN8JnWIuV2LpQnIktpognAY6XaR7Fwyn5CfVqsadUeN8MUxvw9fJASYXwEOpS9dTb0qte2JXZnSRVs54GU36y8k8ts6tPyeceajkKgB5DIQKX1PX8X5RQqcZNgiaBNBvflGWCiCeg2pBipyZ4PtspuNRVif16+TciWeCDSSR+BH2csaHr3L6AYNtZu2ECvIDJuVkEs4obNG8MrvfYE8WvF0Wn2iJ6PBmOjApqMVKPj473mrPQxIrJC8ffh8QZyIkfzDquTjM5zqRpUth2Z8YmZis6Kp5TLwDSyOhHfQXxSG5YtUHLiSxAwZY/F91/Z07COYTATAU57vxWD8Yz8JG67ocrVwQTQ7QOPpEH8qGBAp038k8LxCHbE7oGqBCX6J+XfOw+MmTVSeuBMTl7oWeSRKgYwKcEQRgo35V0kvMqqXxP2/zgqIr0zf/I+qj8Vl+rtikE0w7HnNZzatBzRCMOsd/Mv+SVkP2Zvc0S5SRNsFlDjSf4+dqZBjC9lngGfSeMvd4I20vcUBJddBrKtEIjTf+GPsYIxLj0oMz4ZEu6rDA8Aw1EQo=
+    secure: B9Z7Mlqrt+I7Vhf0ihfzfiitUgxe/On/a+aT6dNNNtdSaFwE/81Io17wc80kEfM0i0kbiobXGzs4TR9dsixxy3e5+nO+br3ZRdA8DJF6jXLhntwxbk0nPz+fzAj661hXUsR8zzPxJ7kOhczLULmtU9oVE7XcKpNH2BnCDIF4AaSmirN0zC2LYfz3TGNTSmQo7CtPSQzf8AbNgn3AFbvDXBBEI6QiWDanPCQ+6jPVoCmdZ25x2rMJes9ysnPauY8tM4WHSrryIZTXpZlhLDYC+m0mlgtucY5NQ88yjxPjzywmep1DPoLZCW/nFC7RNg7AELfrA4AH1PensfBcNYZ7LhGCGwg3hqz6oypliD+fnyCqbMf49xcj+0MVQvJm1+cDi39bjmnGSaEc0r5nJ0gxys3dQaeXwvaSNdUmmDrKCxhRNz84RNymulrqOLJuHiNcmX5AoHrwU7k0O7EUChffqAoECtevzru5HB2tSsSHT9TTml73lt1s8NMOCL3TrnBFVOaxgYxghSaaOmgCuMW7Epu+5rqt2sxZcS6n1fMKxojbuzdrqo+Q917qj65akb29KtezPelFyz6RGdCZe4YojGB70M+a5stzNEYM/xH8LSxVsAeolnc9ReYK2FyGspJkak0BGlhm4YxhQ5PRezL0EhlV7FaLE7RDqjmiHwQVHOY=
 notifications:
   webhooks: https://outlook.office.com/webhook/09d65d9c-ba4d-4ce4-8ff9-985e1ea578a1@8f2a0bdd-25fe-430a-adb5-0d2367dd50ee/TravisCI/308b447ae6eb4c3f9c7e153e97a4bd25/aaeb5e7b-fe7b-4d97-9adf-3089c10da2cc
   on_success: change

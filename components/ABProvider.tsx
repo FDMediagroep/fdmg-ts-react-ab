@@ -12,12 +12,14 @@ export const ABContext = createContext<[Cookies, (cookies: Cookies) => void]>([
 ]);
 
 interface Props {
-    initialState: Cookies;
+    initialState?: Cookies;
     [x: string]: any;
 }
 
 export function ABProvider(props: Props) {
-    const [cookies, setCookies] = useState(props.initialState || Cookies.get());
+    const [cookies, setCookies] = useState(
+        props.initialState || Cookies.get() || {}
+    );
 
     return (
         <ABContext.Provider value={[cookies, setCookies]}>

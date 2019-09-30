@@ -12,6 +12,7 @@
         "url": "git@github.com:FDMediagroep/fdmg-ts-react-ab.git"
     },
     "scripts": {
+        "build": "next build",
         "build-prod": "cross-env NODE_ENV=production webpack --mode=production",
         "lint": "eslint components/**/*",
         "release": "npm update && npm i && npm run test && npm run lint && npm run build-prod",
@@ -25,15 +26,16 @@
     "license": "ISC",
     "dependencies": {
         "js-cookie": "^2.2.1",
-        "react": "^16.9.0",
-        "react-dom": "^16.9.0",
+        "react": "^16.10.1",
+        "react-dom": "^16.10.1",
         "react-modal": "^3.10.1"
     },
     "devDependencies": {
         "@testing-library/jest-dom": "^4.1.0",
-        "@testing-library/react": "^9.1.4",
+        "@testing-library/react": "^9.2.0",
         "@types/jest": "^24.0.18",
         "@types/js-cookie": "^2.2.2",
+        "@types/node": "^12.7.8",
         "@types/react": "^16.9.3",
         "@types/react-dom": "^16.9.1",
         "@types/react-modal": "^3.8.3",
@@ -42,11 +44,13 @@
         "awesome-typescript-loader": "^5.2.1",
         "coveralls": "^3.0.6",
         "cross-env": "^6.0.0",
-        "eslint": "^6.4.0",
+        "eslint": "^6.5.0",
         "eslint-config-prettier": "^6.3.0",
         "eslint-plugin-prettier": "^3.1.1",
         "eslint-plugin-react": "^7.14.3",
         "jest": "^24.9.0",
+        "next": "^9.0.7",
+        "nookies": "^2.0.8",
         "prettier": "^1.18.2",
         "ts-jest": "^24.1.0",
         "typescript": "^3.6.3",

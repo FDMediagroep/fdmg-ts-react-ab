@@ -177,7 +177,7 @@ export function Experiment(props: Experiment) {
                           {childrenWithProps.length})
                       </button>,
                       props.debugRoot ||
-                          (document.querySelector('#ABdebug') as HTMLElement)
+                          (document.querySelector('body') as HTMLElement)
                   )
                 : null}
 

@@ -43,7 +43,7 @@ export function Debug(props: Props) {
                             {props.name}
                             <span
                                 onClick={handleRemoveExperiment}
-                                title="Remove experiment from cookie"
+                                title="Remove experiment cookie"
                             >
                                 [x]
                             </span>
