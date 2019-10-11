@@ -28,6 +28,15 @@
         "example",
         "maintenance"
       ]
+    },
+    {
+      "login": "greenkeeperio",
+      "name": "Greenkeeper",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/13812225?v=4",
+      "profile": "https://greenkeeper.io/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
