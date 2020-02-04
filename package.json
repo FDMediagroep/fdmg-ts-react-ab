@@ -29,7 +29,7 @@
         "react": "^16.10.2",
         "react-dom": "^16.10.2",
         "react-modal": "^3.10.1",
-        "styled-components": "^4.4.0"
+        "styled-components": "^5.0.1"
     },
     "devDependencies": {
         "@babel/plugin-proposal-decorators": "^7.6.0",
