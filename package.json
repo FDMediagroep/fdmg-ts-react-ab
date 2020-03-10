@@ -26,8 +26,8 @@
     "license": "ISC",
     "dependencies": {
         "js-cookie": "^2.2.1",
-        "react": "^16.10.2",
-        "react-dom": "^16.10.2",
+        "react": "^16.13.0",
+        "react-dom": "^16.13.0",
         "react-modal": "^3.10.1",
         "styled-components": "^4.4.0"
     },
