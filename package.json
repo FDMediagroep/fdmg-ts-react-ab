@@ -1,77 +1,81 @@
 {
-    "name": "@fdmg/ab",
-    "version": "1.0.3",
-    "description": "A/B Testing Component",
-    "types": "dist/ab.d.ts",
-    "main": "dist/ab.js",
-    "publishConfig": {
-        "access": "public"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git@github.com:FDMediagroep/fdmg-ts-react-ab.git"
-    },
-    "scripts": {
-        "build": "next build",
-        "build-prod": "cross-env NODE_ENV=production webpack --mode=production",
-        "lint": "eslint components/**/*",
-        "release": "npm update && npm i && npm run test && npm run lint && npm run build-prod",
-        "test": "jest"
-    },
-    "keywords": [
-        "AB",
-        "Testing"
+  "name": "@fdmg/ab",
+  "version": "1.0.3",
+  "description": "A/B Testing Component",
+  "types": "dist/ab.d.ts",
+  "main": "dist/ab.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:FDMediagroep/fdmg-ts-react-ab.git"
+  },
+  "scripts": {
+    "build": "next build",
+    "build-prod": "cross-env NODE_ENV=production webpack --mode=production",
+    "lint": "eslint components/**/*",
+    "release": "npm update && npm i && npm run test && npm run lint && npm run build-prod",
+    "test": "jest",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "keywords": [
+    "AB",
+    "Testing"
+  ],
+  "author": "Willem Liu",
+  "license": "ISC",
+  "dependencies": {
+    "js-cookie": "^2.2.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-modal": "^3.11.2",
+    "styled-components": "^4.4.1",
+    "snyk": "^1.316.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.8.3",
+    "@testing-library/jest-dom": "5.1.1",
+    "@testing-library/react": "^9.5.0",
+    "@types/jest": "^25.1.0",
+    "@types/js-cookie": "^2.2.5",
+    "@types/node": "^13.1.0",
+    "@types/react": "^16.9.29",
+    "@types/react-dom": "^16.9.5",
+    "@types/react-modal": "^3.10.5",
+    "@types/styled-components": "^5.0.0",
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "awesome-typescript-loader": "^5.2.1",
+    "coveralls": "^3.0.11",
+    "cross-env": "^7.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
+    "jest": "^24.9.0",
+    "next": "^9.3.3",
+    "nookies": "^2.2.1",
+    "prettier": "^1.19.1",
+    "ts-jest": "^25.1.0",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "collectCoverage": true,
+    "coverageDirectory": "dist/js-coverage",
+    "coverageReporters": [
+      "lcov",
+      "text"
     ],
-    "author": "Willem Liu",
-    "license": "ISC",
-    "dependencies": {
-        "js-cookie": "^2.2.1",
-        "react": "^16.13.1",
-        "react-dom": "^16.13.1",
-        "react-modal": "^3.11.2",
-        "styled-components": "^4.4.1"
-    },
-    "devDependencies": {
-        "@babel/plugin-proposal-decorators": "^7.8.3",
-        "@testing-library/jest-dom": "5.1.1",
-        "@testing-library/react": "^9.5.0",
-        "@types/jest": "^25.1.0",
-        "@types/js-cookie": "^2.2.5",
-        "@types/node": "^13.1.0",
-        "@types/react": "^16.9.29",
-        "@types/react-dom": "^16.9.5",
-        "@types/react-modal": "^3.10.5",
-        "@types/styled-components": "^5.0.0",
-        "@typescript-eslint/eslint-plugin": "^2.26.0",
-        "@typescript-eslint/parser": "^2.26.0",
-        "awesome-typescript-loader": "^5.2.1",
-        "coveralls": "^3.0.11",
-        "cross-env": "^7.0.0",
-        "eslint": "^6.8.0",
-        "eslint-config-prettier": "^6.10.1",
-        "eslint-plugin-prettier": "^3.1.2",
-        "eslint-plugin-react": "^7.19.0",
-        "jest": "^24.9.0",
-        "next": "^9.3.3",
-        "nookies": "^2.2.1",
-        "prettier": "^1.19.1",
-        "ts-jest": "^25.1.0",
-        "typescript": "^3.8.3",
-        "webpack": "^4.42.1",
-        "webpack-cli": "^3.3.11"
-    },
-    "jest": {
-        "preset": "ts-jest",
-        "collectCoverage": true,
-        "coverageDirectory": "dist/js-coverage",
-        "coverageReporters": [
-            "lcov",
-            "text"
-        ],
-        "globals": {
-            "ts-jest": {
-                "tsConfig": "tsconfig.test.json"
-            }
-        }
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.test.json"
+      }
     }
+  },
+  "snyk": true
 }
